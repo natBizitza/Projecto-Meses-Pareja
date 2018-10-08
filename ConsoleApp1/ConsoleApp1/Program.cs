@@ -10,16 +10,26 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int month year;
+            int month, year, maxDays,randYear1, randYear2;
             Console.WriteLine("Escribe el mes");
-            month = Int32.Parse(Console.ReadLine());
+            month = Convert.ToInt32(Console.ReadLine());
             CheckMonth(month);
 
-           Console.WriteLine(AskDay(year, month));
+            Console.WriteLine("Escriba dos años entre los que generar uno aleatorio");
+            randYear1 = Convert.ToInt32(Console.ReadLine());
+            randYear2 = Convert.ToInt32(Console.ReadLine());
+            year = Year(randYear1, randYear2);
 
+            Console.WriteLine("El año generado es " + year);
+            maxDays = AskDays(year, month);
+
+            Console.WriteLine(AskDay(year, month));
+
+        
 
             Console.ReadKey();
         }
+
         public static int CheckMonth(int month)
         {
             int count = 0;
@@ -35,7 +45,22 @@ namespace ConsoleApp1
             return month;
         }
 
-        public static int AskDay(int year, int month)
+        public static int Year(int randYear1, int randYear2)
+        {
+            int year;
+            Random random = new Random();
+            if (randYear2 > randYear1)
+            {
+                year = random.Next(randYear1, randYear2);//Max value al final  
+            }
+            else
+            {
+                year = random.Next(randYear2, randYear1);
+            }
+            return year;
+        }
+
+        public static int AskDays(int year, int month)
         {
             int maxDays;
 
@@ -57,9 +82,6 @@ namespace ConsoleApp1
             }
 
             return maxDays;
-
-
-            return day;
         }
     }
 }
