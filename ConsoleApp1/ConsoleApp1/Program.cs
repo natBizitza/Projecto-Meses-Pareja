@@ -23,7 +23,7 @@ namespace ConsoleApp1
             Console.WriteLine("El año generado es " + year);
             maxDays = AskDays(year, month);
 
-            Console.WriteLine(AskDay(year, month));
+            Console.WriteLine(AskDays(year, month));
 
         
 
@@ -82,6 +82,23 @@ namespace ConsoleApp1
             }
 
             return maxDays;
+        }
+
+        public static int ShowNextDay(int days, int maxDays, int month, int year)
+        {
+          if(days +1 >maxDays)
+            {
+                days = 1;
+                month++;
+            }
+          else if(month>12)
+            {
+                year++;
+            } else
+            {
+                //Console.WriteLine("Something is wrong");
+            }
+          return days, month, year;
         }
     }
 }
