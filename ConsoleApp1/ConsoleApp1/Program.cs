@@ -10,10 +10,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int month;
+            int month year;
             Console.WriteLine("Escribe el mes");
             month = Int32.Parse(Console.ReadLine());
             CheckMonth(month);
+
+           Console.WriteLine(AskDay(year, month));
 
 
             Console.ReadKey();
@@ -31,6 +33,33 @@ namespace ConsoleApp1
                 count = count + 1;
             } while (month < 1 || month > 12);
             return month;
+        }
+
+        public static int AskDay(int year, int month)
+        {
+            int maxDays;
+
+            if (DateTime.IsLeapYear(year) && month == 2)
+            {
+                maxDays = 29;
+            }
+            else if (!DateTime.IsLeapYear(year) && month == 2)
+            {
+                maxDays = 28;
+            }
+            else if (month==3 || month == 6|| month== 9|| month ==11)
+            {
+                maxDays = 30;
+            }
+            else 
+            {
+                maxDays = 31;
+            }
+
+            return maxDays;
+
+
+            return day;
         }
     }
 }
